@@ -47,6 +47,7 @@ add_subdirectory(${PROJECT_NAME}/third_party/fltk EXCLUDE_FROM_ALL)
 
 add_sources(CORE_SRC "${CMAKE_SOURCE_DIR}/${PROJECT_NAME}/src")
 add_executable(${PROJECT_NAME} "${CMAKE_SOURCE_DIR}/${PROJECT_NAME}/main.cpp" ${CORE_SRC})
+target_sources(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/resources/icons/icon.rc)
 target_include_directories(${PROJECT_NAME}
     PUBLIC
         "${CMAKE_SOURCE_DIR}/${PROJECT_NAME}/inc"
