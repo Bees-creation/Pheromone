@@ -1,0 +1,3 @@
+[submodule "Pheromone/third_party/fltk"]
+	path = Pheromone/third_party/fltk
+	url = https://github.com/fltk/fltk
