@@ -1,4 +1,4 @@
-#ifdef Debug
+#ifdef PHEROMONE_DEBUG
 #include <intrin.h>
 #define debug_assert() __debugbreak()
 #else

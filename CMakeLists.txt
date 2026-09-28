@@ -25,7 +25,7 @@ endif()
 set(PLATFORM_TAG "${OS_NAME}-${ARCH_NAME}")
 message(STATUS "Building for platform: ${PLATFORM_TAG}")
 
-add_compile_definitions("${CMAKE_BUILD_TYPE}")
+add_compile_definitions($<$<CONFIG:Debug>:PHEROMONE_DEBUG>)
 message(STATUS "Building config: ${CMAKE_BUILD_TYPE}")
 
 set(BASE_DIR "${CMAKE_SOURCE_DIR}")
@@ -47,7 +47,11 @@ add_subdirectory(${PROJECT_NAME}/third_party/fltk EXCLUDE_FROM_ALL)
 
 add_sources(CORE_SRC "${CMAKE_SOURCE_DIR}/${PROJECT_NAME}/src")
 add_executable(${PROJECT_NAME} "${CMAKE_SOURCE_DIR}/${PROJECT_NAME}/main.cpp" ${CORE_SRC})
-target_sources(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/resources/icons/icon.rc)
+target_sources(${PROJECT_NAME}
+    PRIVATE
+        ${CMAKE_SOURCE_DIR}/resources/icons/icon.rc
+        ${CMAKE_SOURCE_DIR}/resources/description/description.rc
+)
 target_include_directories(${PROJECT_NAME}
     PUBLIC
         "${CMAKE_SOURCE_DIR}/${PROJECT_NAME}/inc"

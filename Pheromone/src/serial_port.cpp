@@ -161,7 +161,7 @@ bool SerialPort::open(const SerialConfig& cfg) {
         nullptr);
 
     if (handle_ == INVALID_HANDLE_VALUE) {
-        setError("无法打开 " + cfg.portName + "，错误码 " +
+        setError("无法打开 " + fullName + "，错误码 " +
                  std::to_string(GetLastError()));
         return false;
     }

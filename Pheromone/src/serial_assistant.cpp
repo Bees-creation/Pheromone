@@ -182,15 +182,15 @@ void SerialAssistant::buildUI() {
 
 void SerialAssistant::refreshPortList() {
     portChoice_->clear();
-    auto ports = enumerateSerialPorts();
+    ports_ = enumerateSerialPorts();
 
-    if (ports.empty()) {
+    if (ports_.empty()) {
         portChoice_->add("(无可用串口)");
         portChoice_->value(0);
         portChoice_->deactivate();
     } else {
-        for (const auto& p : ports)
-            portChoice_->add(p.friendlyName.c_str());
+        for (auto& p : ports_)
+            portChoice_->add(p.friendlyName.c_str(), 0, nullptr, &p);
         portChoice_->value(0);
         portChoice_->activate();
     }
@@ -207,7 +207,9 @@ void SerialAssistant::onRefreshPorts(Fl_Widget* w, void* data) {
 
 std::string SerialAssistant::getSelectedPort() const {
     const Fl_Menu_Item* item = portChoice_->mvalue();
-    return item ? std::string(item->label()) : std::string();
+    if (!item || !item->user_data())
+        return {};
+    return static_cast<const SerialConfig*>(item->user_data())->portName;
 }
 
 void SerialAssistant::onOpenClose(Fl_Widget* w, void* data) {

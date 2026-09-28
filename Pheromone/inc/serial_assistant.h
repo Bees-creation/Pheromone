@@ -17,6 +17,7 @@
 #include <thread>
 #include <mutex>
 #include <string>
+#include <vector>
 
 class SerialAssistant : public Fl_Window {
 public:
@@ -46,6 +47,7 @@ private:
     std::thread readThread_;             // 读取线程
     std::atomic<bool> reading_{false};   // 读取标志位
     std::mutex portMutex_;               // 互斥锁
+    std::vector<SerialConfig> ports_;    // 最近一次枚举到的串口，菜单项的 user_data 指向这里的元素
 
     /**
      * @brief 辅助函数，用于构建一个文本显示 UI

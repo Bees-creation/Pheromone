@@ -1,0 +1,30 @@
+#include <windows.h>
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+ FILEFLAGS 0x0L
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404b0" // 简体中文 + Unicode
+        BEGIN
+            VALUE "CompanyName", "Your Company\0"
+            VALUE "FileDescription", "Pheromone\0"
+            VALUE "FileVersion", "1.0.0.1\0"
+            VALUE "InternalName", "Pheromone\0"
+            VALUE "LegalCopyright", "\0"
+            VALUE "OriginalFilename", "Pheromone.exe\0"
+            VALUE "ProductName", "Pheromone\0"
+            VALUE "ProductVersion", "1.0.0.1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0804, 1200
+    END
+END
